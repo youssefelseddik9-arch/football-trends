@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://gooalpulse.netlify.app/sitemap.xml
+Sitemap: https://gooalpulse.netlify.app/news_sitemap.xml

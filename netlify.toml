@@ -1,0 +1,73 @@
+# ══════ Netlify configuration — GoalPulse ══════
+# Cache headers + security headers. Long-lived caching for /images, /fonts
+# and /css, plus real-404 behavior for missing URLs, now lives in the
+# auto-generated _headers and _redirects files (Netlify file-based rules take
+# precedence over netlify.toml). Kept here only: build settings + security headers.
+
+[build]
+  publish = "."
+
+# ── Security headers (apply to every response) ──
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    X-Frame-Options = "SAMEORIGIN"
+    X-XSS-Protection = "1; mode=block"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "camera=(), microphone=(), geolocation=(), interest-cohort=()"
+    Strict-Transport-Security = "max-age=63072000; includeSubDomains; preload"
+    X-UA-Compatible = "IE=edge"
+
+# ── Explicit SEO asset protections (belt-and-suspenders alongside _headers/_redirects):
+# Never let a missing SEO asset silently fall back to index.html — crawlers
+# must receive a real 404 so Googlebot / BingBot / IndexNow don't index soft-404s.
+[[redirects]]
+  from = "/sitemap.xml"
+  to = "/sitemap.xml"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/news_sitemap.xml"
+  to = "/news_sitemap.xml"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/discover_feed.xml"
+  to = "/discover_feed.xml"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/rss.xml"
+  to = "/rss.xml"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/robots.txt"
+  to = "/robots.txt"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/goalpulse-indexnow-key-2026.txt"
+  to = "/gooalpulse-indexnow-key-2026.txt"
+  status = 301
+
+[[redirects]]
+  from = "/gooalpulse-indexnow-key-2026.txt"
+  to = "/gooalpulse-indexnow-key-2026.txt"
+  status = 200
+  force = true
+
+# NOTE: No SPA catch-all fallback here — every site page is a static file, and
+# serving index.html with HTTP 200 for unknown URLs creates soft-404 SEO issues.
+# Missing URLs must return a genuine 404 (see _redirects).
+    Content-Security-Policy = "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' *.effectivecpmnetwork.com www.highperformanceformat.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://images.pexels.com https://upload.wikimedia.org; font-src 'self'; connect-src 'self'"
+
+# NOTE: No SPA catch-all fallback here — every site page is a static file, and
+# serving index.html with HTTP 200 for unknown URLs creates soft-404 SEO issues.
+# Missing URLs must return a genuine 404 (see _redirects).

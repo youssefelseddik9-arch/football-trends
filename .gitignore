@@ -1,0 +1,17 @@
+# Google Service Account keys & secrets
+service_account.json
+manifest-*.json
+*.pem
+.env
+
+# Python cache & temp
+__pycache__/
+*.pyc
+*.pyo
+
+# Dependencies & build outputs
+node_modules/
+.cache/
+.DS_Store
+.github/
+.github/

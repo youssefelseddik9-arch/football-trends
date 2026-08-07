@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="theme-color" content="#0f172a">
+
+    <!-- Preconnect to ad + image CDNs for faster TLS handshake -->
+    <link rel="preconnect" href="https://www.highperformanceformat.com" crossorigin>
+    <link rel="preconnect" href="https://pl30650962.effectivecpmnetwork.com" crossorigin>
+    <link rel="preconnect" href="https://upload.wikimedia.org" crossorigin>
+    <link rel="dns-prefetch" href="https://api.indexnow.org">
+    <title>GoalPulse | Live European Football News & Match Center</title>
+    <meta name="description" content="GoalPulse — the premier platform for live European football coverage, breaking news, match results, transfer updates, and real-time scores across the Premier League, La Liga, Serie A, Bundesliga, and Champions League.">
+    <meta name="keywords" content="GoalPulse, football news, European football, Premier League, La Liga, Serie A, Bundesliga, Champions League, live scores, match results, transfer news, Real Madrid, Barcelona, Liverpool, Manchester City">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <meta name="author" content="GoalPulse Editorial Team">
+    <link rel="canonical" href="https://gooalpulse.netlify.app/">
+
+    <link rel="icon" type="image/webp" href="images/logo.webp">
+    <link rel="apple-touch-icon" href="images/logo.webp">
+
+    <link rel="alternate" hreflang="en" href="https://gooalpulse.netlify.app/">
+    <link rel="alternate" hreflang="x-default" href="https://gooalpulse.netlify.app/">
+    <link rel="alternate" type="application/rss+xml" title="GoalPulse RSS Feed" href="https://gooalpulse.netlify.app/rss.xml">
+    <link rel="alternate" type="application/rss+xml" title="GoalPulse Google Discover Feed" href="https://gooalpulse.netlify.app/discover_feed.xml">
+
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="GoalPulse">
+    <meta property="og:title" content="GoalPulse | Live European Football News & Match Center">
+    <meta property="og:description" content="Exclusive European football coverage, live match results, and breaking transfer news across the Premier League, La Liga, Serie A, Bundesliga, and Champions League.">
+    <meta property="og:image" content="https://gooalpulse.netlify.app/images/logo.webp">
+    <meta property="og:url" content="https://gooalpulse.netlify.app/">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "WebSite",
+          "@id": "https://gooalpulse.netlify.app/#website",
+          "url": "https://gooalpulse.netlify.app/",
+          "name": "GoalPulse",
+          "description": "Live European football news, match results, and breaking transfer coverage",
+          "inLanguage": ["en"]
+        },
+        {
+          "@type": "Organization",
+          "@id": "https://gooalpulse.netlify.app/#organization",
+          "name": "GoalPulse",
+          "logo": {
+            "@type": "ImageObject",
+            "url": "https://gooalpulse.netlify.app/images/logo.webp"
+          }
+        }
+      ]
+    }
+    </script>
+
+    <link rel="stylesheet" href="css/fonts.css">
+    <link rel="stylesheet" href="css/portal.min.css">
+
+    <style>
+        .lang-dropdown-wrapper { background: #1e293b; padding: 4px 10px; border-radius: 6px; display: inline-flex; align-items: center; gap: 8px; color: #fff; font-size: 13px; }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <a href="index.html" class="brand-logo">
+            <img src="images/logo.webp" alt="GoalPulse Logo" style="height:38px; width:auto; border-radius:6px; object-fit:contain;" onerror="this.src='images/hero.webp';"> <span>GoalPulse</span>
+        </a>
+        <div style="display: flex; align-items: center; gap: 15px; flex-wrap: wrap;">
+            <div class="lang-dropdown-wrapper">
+                <span><span style="color:#dc2626;">▸</span> Language:</span>
+                <select id="nativeLangSelect" onchange="switchSiteLanguage(this.value)" style="background:#0f172a; color:#fff; border:1px solid #475569; padding:4px 8px; border-radius:4px; font-family:inherit; cursor:pointer;">
+                    <option value="en">English</option>
+                    <option value="fr">Français</option>
+                    <option value="es">Español</option>
+                    <option value="ar">العربية</option>
+                </select>
+            </div>
+            <a href="about.html" style="color:#cbd5e1; text-decoration:none; font-size:14px;" data-i18n="nav_about">About Us</a>
+        </div>
+    </nav>
+
+    <!-- COMPACT MATCH TICKER BAR -->
+    <div class="top-match-bar">
+        <div class="top-match-controls">
+            <button class="match-btn-mini" onclick="openMatchModal()" data-i18n="btn_schedule">جدول المباريات</button>
+            <button class="match-btn-mini secondary" onclick="openMatchModal()" data-i18n="btn_week">الأسبوع</button>
+        </div>
+        <div class="top-match-ticker ticker-wrap-css">
+            <div class="ticker-content-css">
+                <div class="match-ticker-card"><span class="ticker-text">Live coverage of the top European and world football matches today</span></div><div class="match-ticker-card"><span class="ticker-text">Live coverage of the top European and world football matches today</span></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- BREAKING NEWS TICKER (positioned BELOW match bar) -->
+    <div class="ticker-wrap">
+        <span class="ticker-badge" data-i18n="badge_breaking">● Breaking</span>
+        <div class="ticker-wrap-css">
+            <div class="ticker-content-css">
+                <span>Man City | Liverpool: 3-2 thriller -- <span data-i18n="ticker_suffix">follow exclusive coverage and tactical analysis as it unfolds on GoalPulse.</span></span>
+                <span style="margin-right: 50px;">Man City | Liverpool: 3-2 thriller -- <span data-i18n="ticker_suffix">follow exclusive coverage and tactical analysis as it unfolds on GoalPulse.</span></span>
+            </div>
+        </div>
+    </div>
+
+    <main class="main-layout">
+        <section class="main-content">
+            <!-- Featured Hero Article -->
+            <article class="hero-card">
+                <img src="images/generated/test.jpg" alt="Man City | Liverpool: 3-2 thriller" class="hero-img" width="850" height="360" fetchpriority="high" decoding="async" onerror="this.onerror=null;this.src='images/hero.webp';">
+                <div class="hero-content">
+                    <span class="category-tag" data-i18n="hero_tag">Top Google Trend Story</span>
+                    <h1 class="hero-title" data-i18n="latest_title">Man City | Liverpool: 3-2 thriller</h1>
+                    <p class="hero-excerpt" data-i18n="hero_excerpt">In-depth exclusive coverage of the European football developments dominating headlines and search trends right now...</p>
+                    <a href="post_20260806175931.html" style="display:inline-block; background:#dc2626; color:#fff; padding:10px 24px; border-radius:6px; text-decoration:none; font-weight:bold;" data-i18n="hero_btn">Read Full Article</a>
+                </div>
+            </article>
+
+            <!-- Top Adsterra 728x90 Banner below Hero -->
+            <div class="ad-container-728" style="margin:25px auto;" loading="lazy">
+                <script type="text/javascript">
+                  atOptions = {
+                    'key' : '82bdfd8fd781c6112b908116a83c04d9',
+                    'format' : 'iframe',
+                    'height' : 90,
+                    'width' : 728,
+                    'params' : {}
+                  };
+                </script>
+                <script type="text/javascript" src="https://www.highperformanceformat.com/82bdfd8fd781c6112b908116a83c04d9/invoke.js"></script>
+            </div>
+
+            <h2 style="font-size:22px; font-weight:800; margin-bottom:20px; border-left:4px solid #dc2626; padding-left:10px;" data-i18n="latest_heading">Latest Football Coverage & Articles</h2>
+            <div class="news-grid">
+                
+        <div class="news-card">
+            <img src="images/generated/test.jpg" alt="Man City | Liverpool: 3-2 thriller - GoalPulse" class="news-card-img" loading="lazy" width="130" height="90" onerror="this.onerror=null;this.src='images/hero.webp';">
+            <div class="news-card-body">
+                <span class="category-tag premier-league">Premier League</span>
+                <a href="post_20260806175931.html" class="news-card-title">Man City | Liverpool: 3-2 thriller</a>
+            </div>
+        </div>
+        
+        <div class="news-card">
+            <img src="images/press-conference-mobile.webp" alt="How to watch Birmingham vs Barcelona: Live stream details as La Liga champions arrive in the UK - GoalPulse" class="news-card-img" loading="lazy" width="130" height="90" onerror="this.onerror=null;this.src='images/hero.webp';">
+            <div class="news-card-body">
+                <span class="category-tag ucl">Champions League</span>
+                <a href="post_20260731194129.html" class="news-card-title">How to watch Birmingham vs Barcelona: Live stream details as La Liga champions arrive in the UK</a>
+            </div>
+        </div>
+        
+        <div class="news-card">
+            <img src="images/world-cup-trophy.webp" alt="Champions League last 16 draw: Man City draw Real Madrid as Arsenal, Liverpool, Chelsea, Spurs and Newcastle learn fate - GoalPulse" class="news-card-img" loading="lazy" width="130" height="90" onerror="this.onerror=null;this.src='images/hero.webp';">
+            <div class="news-card-body">
+                <span class="category-tag premier-league">Premier League</span>
+                <a href="post_20260731171700.html" class="news-card-title">Champions League last 16 draw: Man City draw Real Madrid as Arsenal, Liverpool, Chelsea, Spurs and Newcastle learn fate</a>
+            </div>
+        </div>
+        
+        <div class="news-card">
+            <img src="images/press-conference.webp" alt="الدوري السعودي: النصر ينطلق بالفتح... وكلاسيكو الهلال والأهلي في «الثالثة» - GoalPulse" class="news-card-img" loading="lazy" width="130" height="90" onerror="this.onerror=null;this.src='images/hero.webp';">
+            <div class="news-card-body">
+                <span class="category-tag general">Football News</span>
+                <a href="post_20260730171943.html" class="news-card-title">الدوري السعودي: النصر ينطلق بالفتح... وكلاسيكو الهلال والأهلي في «الثالثة»</a>
+            </div>
+        </div>
+        
+        <div class="news-card">
+            <img src="images/walking-away.webp" alt="كأس ملك إسبانيا.. ريال سوسييداد يلحق بأتلتيكو مدريد إلى النهائي - alyaum.com - GoalPulse" class="news-card-img" loading="lazy" width="130" height="90" onerror="this.onerror=null;this.src='images/hero.webp';">
+            <div class="news-card-body">
+                <span class="category-tag general">Football News</span>
+                <a href="post_20260729222307.html" class="news-card-title">كأس ملك إسبانيا.. ريال سوسييداد يلحق بأتلتيكو مدريد إلى النهائي - alyaum.com</a>
+            </div>
+        </div>
+        
+        <div class="news-card">
+            <img src="images/generated/post_20260729221620.jpg" alt="صدمة لنجم ريال مدريد.. بيلينغهام خارج تشكيلة منتخب إنجلترا - alyaum - GoalPulse" class="news-card-img" loading="lazy" width="130" height="90" onerror="this.onerror=null;this.src='images/hero.webp';">
+            <div class="news-card-body">
+                <span class="category-tag general">Football News</span>
+                <a href="post_20260729221620.html" class="news-card-title">صدمة لنجم ريال مدريد.. بيلينغهام خارج تشكيلة منتخب إنجلترا - alyaum</a>
+            </div>
+        </div>
+        
+            </div>
+        </section>
+
+        <aside class="sidebar">
+            <div class="widget">
+                <h3 class="widget-title" data-i18n="sidebar_most_read">Most Read & Searched Today</h3>
+                
+        <a href="post_20260806175931.html" class="trending-item">
+            <span class="trending-number">1</span>
+            <span class="trending-text">Man City | Liverpool: 3-2 thriller</span>
+        </a>
+        
+        <a href="post_20260731194129.html" class="trending-item">
+            <span class="trending-number">2</span>
+            <span class="trending-text">How to watch Birmingham vs Barcelona: Live stream details as La Liga champions arrive in the UK</span>
+        </a>
+        
+        <a href="post_20260731171700.html" class="trending-item">
+            <span class="trending-number">3</span>
+            <span class="trending-text">Champions League last 16 draw: Man City draw Real Madrid as Arsenal, Liverpool, Chelsea, Spurs and Newcastle learn fate</span>
+        </a>
+        
+        <a href="post_20260730171943.html" class="trending-item">
+            <span class="trending-number">4</span>
+            <span class="trending-text">الدوري السعودي: النصر ينطلق بالفتح... وكلاسيكو الهلال والأهلي في «الثالثة»</span>
+        </a>
+        
+        <a href="post_20260729222307.html" class="trending-item">
+            <span class="trending-number">5</span>
+            <span class="trending-text">كأس ملك إسبانيا.. ريال سوسييداد يلحق بأتلتيكو مدريد إلى النهائي - alyaum.com</span>
+        </a>
+        
+            </div>
+
+            <div class="widget ad-banner-widget">
+                <span style="font-size:12px; color:#888; font-weight:bold; margin-bottom:10px;" data-i18n="ad_label">Sponsored Ad - Adsterra</span>
+                <script async="async" data-cfasync="false" src="https://pl30650962.effectivecpmnetwork.com/29fb4cec1b995ab1738cf1b8e766a785/invoke.js"></script>
+                <div id="container-29fb4cec1b995ab1738cf1b8e766a785"></div>
+            </div>
+        </aside>
+    </main>
+
+    <!-- MATCH DETAILS MODAL -->
+    <div id="matchModal" class="match-modal">
+        <div class="match-modal-content">
+            <button class="close-modal-btn" onclick="closeMatchModal()">×</button>
+            <h3 style="font-size:20px; font-weight:800; color:var(--primary); margin-bottom:15px; border-bottom:2px solid var(--accent-red); padding-bottom:8px;" data-i18n="modal_title">Live Match Schedule & Statistics (UTC/GMT)</h3>
+            <div id="modalMatchList">
+                <div class="match-card empty-state"><p>No live matches available at the moment. Stay tuned for the next update.</p></div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p data-i18n="footer_rights">&copy; 2026 GoalPulse. All Rights Reserved.</p>
+        <p><a href="about.html" data-i18n="nav_about">About Us</a> | <a href="privacy.html" data-i18n="nav_privacy">Privacy Policy</a></p>
+    </footer>
+
+    <!-- Adsterra Vignette/Popunder (non-intrusive) -->
+    <script src="https://pl30650964.effectivecpmnetwork.com/53/f4/e7/53f4e7d63aacc82e63ee31788fa4a719.js" data-cfasync="false"></script>
+    <!-- Adsterra additional ad-unit (non-display) -->
+    <script src="https://pl30650961.effectivecpmnetwork.com/09/c8/a5/09c8a54b7a416983887fdd259ef81ee3.js" data-cfasync="false"></script>
+
+    <script>
+        const siteTranslations = {
+            en: {
+                "nav_about": "About Us",
+                "nav_privacy": "Privacy Policy",
+                "btn_schedule": "Match Schedule",
+                "btn_week": "This Week",
+                "badge_breaking": "● Breaking",
+                "hero_tag": "Top Google Trend Story",
+                "latest_title": "Man City | Liverpool: 3-2 thriller",
+                "hero_excerpt": "In-depth exclusive coverage of the European football developments dominating headlines and search trends right now...",
+                "hero_btn": "Read Full Article",
+                "ticker_suffix": "follow exclusive coverage and tactical analysis as it unfolds on GoalPulse.",
+                "latest_heading": "Latest Football Coverage & Articles",
+                "sidebar_most_read": "Most Read & Searched Today",
+                "ad_label": "Sponsored Ad - Adsterra",
+                "modal_title": "Live Match Schedule & Statistics (UTC/GMT)",
+                "footer_rights": "© 2026 GoalPulse. All Rights Reserved."
+            },
+            fr: {
+                "nav_about": "À propos",
+                "nav_privacy": "Confidentialité",
+                "btn_schedule": "Calendrier",
+                "btn_week": "Cette Semaine",
+                "badge_breaking": "● Flash",
+                "hero_tag": "À la une sur Google",
+                "latest_title": "Man City | Liverpool: 3-2 thriller",
+                "hero_excerpt": "Couverture exclusive et approfondie des développements du football européen qui dominent l'actualité et les tendances de recherche en ce moment...",
+                "hero_btn": "Lire l'Article",
+                "ticker_suffix": "suivez la couverture exclusive et l'analyse tactique en direct sur GoalPulse.",
+                "latest_heading": "Dernières Actualités Sportives",
+                "sidebar_most_read": "Les Plus Lus",
+                "ad_label": "Annonce - Adsterra",
+                "modal_title": "Calendrier des Matchs en Direct (UTC/GMT)",
+                "footer_rights": "© 2026 GoalPulse. Tous droits réservés."
+            },
+            es: {
+                "nav_about": "Sobre Nosotros",
+                "nav_privacy": "Política de Privacidad",
+                "btn_schedule": "Partidos",
+                "btn_week": "Esta Semana",
+                "badge_breaking": "● Última Hora",
+                "hero_tag": "Tendencia Top en Google",
+                "latest_title": "Man City | Liverpool: 3-2 thriller",
+                "hero_excerpt": "Cobertura exclusiva y detallada de los desarrollos del fútbol europeo que dominan los titulares y las tendencias de búsqueda ahora mismo...",
+                "hero_btn": "Leer Artículo Completo",
+                "ticker_suffix": "siga la cobertura exclusiva y el análisis táctico a medida que se desarrolla en GoalPulse.",
+                "latest_heading": "Últimas Noticias y Artículos Deportivos",
+                "sidebar_most_read": "Lo Más Leído Hoy",
+                "ad_label": "Anuncio - Adsterra",
+                "modal_title": "Calendario y Estadísticas de Partidos (UTC/GMT)",
+                "footer_rights": "© 2026 GoalPulse. Todos los derechos reservados."
+            },
+            ar: {
+                "nav_about": "من نحن",
+                "nav_privacy": "سياسة الخصوصية",
+                "btn_schedule": "جدول المباريات",
+                "btn_week": "الأسبوع",
+                "badge_breaking": "● عاجل",
+                "hero_tag": "الخبر الأول متصدر جوجل",
+                "latest_title": "Man City | Liverpool: 3-2 thriller",
+                "hero_excerpt": "تغطية خاصة ومفصلة لأبرز التطورات الرياضية التي تشغل الشارع الكروي ومحركات البحث في هذه اللحظات...",
+                "hero_btn": "اقرأ المقال كاملاً",
+                "ticker_suffix": "تابع التغطية الحصرية والتحليلات الفنية أولاً بأول عبر GoalPulse.",
+                "latest_heading": "أحدث التغطيات والمقالات الرياضية",
+                "sidebar_most_read": "الأكثر قراءة وبحثاً اليوم",
+                "ad_label": "إعلان تجاري - Adsterra",
+                "modal_title": "جدول وإحصائيات المباريات المباشرة (بتوقيت غرينتش UTC/GMT)",
+                "footer_rights": "© 2026 GoalPulse. جميع الحقوق محفوظة."
+            }
+        };
+
+        function switchSiteLanguage(lang) {
+            localStorage.setItem('preferred_lang', lang);
+            document.documentElement.lang = lang;
+            document.documentElement.dir = (lang === 'ar' ? 'rtl' : 'ltr');
+            
+            const t = siteTranslations[lang] || siteTranslations['en'];
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                const val = t[key];
+                if (val && val.indexOf && val.indexOf("{{") === -1 && val !== "") {
+                    el.innerHTML = val;
+                }
+            });
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            const savedLang = localStorage.getItem('preferred_lang') || 'en';
+            const select = document.getElementById('nativeLangSelect');
+            if (select) {
+                select.value = savedLang;
+            }
+            switchSiteLanguage(savedLang);
+        });
+
+        function openMatchModal() { document.getElementById('matchModal').style.display = 'flex'; }
+        function closeMatchModal() { document.getElementById('matchModal').style.display = 'none'; }
+
+        (function setupFirstClickAd() {
+            const AD_LINK = "https://www.effectivecpmnetwork.com/pkpt9jk71e?key=c3a154702180e63a6b4f714b3db126f2";
+            const FLAG = "gp_ad_clicked";
+            if (sessionStorage.getItem(FLAG)) { return; }
+            let triggered = false;
+            function triggerAd(href) {
+                if (triggered) { return; }
+                triggered = true;
+                try {
+                    const w = window.open(AD_LINK, "_blank");
+                    if (w) { w.blur(); window.focus(); }
+                } catch (e) {}
+                sessionStorage.setItem(FLAG, "1");
+                setTimeout(function() {
+                    if (href && href !== "#" && !href.startsWith("javascript:")) {
+                        window.location.href = href;
+                    }
+                }, 250);
+            }
+            document.addEventListener("click", function(e) {
+                const a = e.target.closest("a");
+                if (!a) { return; }
+                const href = a.getAttribute("href");
+                if (!href || href === "#" || href.startsWith("javascript:")) { return; }
+                e.preventDefault();
+                triggerAd(href);
+            }, { once: true });
+        })();
+    </script>
+
+</body>
+</html>

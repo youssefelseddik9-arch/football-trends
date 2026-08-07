@@ -1,0 +1,4 @@
+# GoalPulse Netlify redirects
+# All pages are static files served directly by Netlify.
+# No catch-all rewrite: missing URLs must return a genuine 404 (SEO-safe).
+/home  /index.html  301
